@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>coconut/homepage/{{user_id}}</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="user_homepage.css">
+	<link href='https://fonts.googleapis.com/css?family=League Spartan' rel='stylesheet'>
+</head>
+<body>
+	    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	    	<div class = "navlogo">
+        <a class="navbar-brand" href="coconut/home/{{user_id}}">Coconut</a> </div>
+        <div class="search-bar">
+            <input type="text" class="form-control" placeholder="Search...">
+        </div>
+        <div class="navbar-icons">
+            <a href="#"><i class="fa fa-map-marker"></i></a> <!-- You can use appropriate icon classes -->
+            <a href="#"><i class="fa fa-user"></i></a>
+            <a href="#"><i class="fa fa-shopping-cart"></i></a>
+        </div>
+    </nav>
+	<h1> Here are the categories: </h1>
+	{% for cat in all_cats %}
+	<div class = "category box">
+		<a href="/coconut/home/playing/{{user_id}}/{{cat['category_id']}}"> {{cat["category_name"]}}</a>
+	</div>
+	{% endfor %}
+	<h1> Top Products are: </h1>
+	{% for each in top_products %}
+	<div class = "product_box">
+		<a href="/coconut/product/{{user_id}}/{{each['product_id']}}">Product Page Link: {{each["product_id"]}}</a> <!-- product page-->
+		<p>Name: {{each["product_name"]}}</p>
+		<p>Quantity: {{each["product_quantity"]}} {{each["product_measure"]}}</p>
+		<p>Price: {{each["product_sell_price"]}}</p>
+		<br>
+	</div>
+	{% endfor %}
+	<div class="cart_icon">
+		<a href='/coconut/home/{{user_id}}/cart'> Cart </a>
+		<a href='/coconut/home/{{user_id}}'> Home </a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>coconut/{{user_id}}/cart</title>
+</head>
+<body>
+	<h1>You got the cart</h1>
+	{% for each in cart_products %}
+		<p>Product_id = {{each["cproduct_id"]}}</p>
+		<p>Product_Quantity = {{each["cproduct_quantity"]}}</p>
+		<form action="/coconut/home/{{user_id}}/cart" method="POST">
+            {% set a = each["cproduct_id"] | string ~ "Add" %}
+            {% set d = each["cproduct_id"] | string ~ "Del" %}
+			<button name = "cart" value = {{a}} type="submit"> Add </button>
+			<button name = "cart" value = {{d}} type="submit" {% if cannot_delete %} disabled {% endif %}> Delete </button>
+		</form>
+	{% endfor %}
+	<a href='/coconut/home/{{user_id}}'> Home </a>
+	<a href='/coconut/home/{{user_id}}/address'> Proceed </a>
+</body>
+</html>

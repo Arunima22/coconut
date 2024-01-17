@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Choose Address</title>
+
+</head>
+<body>
+	<form action="/coconut/home/{{user_id}}/address" method="POST">
+		<label for="Addresses">Choose your delivery Address:</label>
+		<select name = "addresses", id = "Addresses">
+		{% for each in addresses %}
+			<option value="{{each[0]}}">{{each[1]}} - {{each[0]}}</option>
+		{% endfor %}
+		</select>
+		<a href="/coconut/dummy"> Add new address here </a>
+		<label for="Payment_Methods">Choose your preferred Payment Method:</label>
+		<select name = "payment_methods", id = "Payment_Methods">
+			<option value="COD"> Cash on Delivery</option>
+			<option value = "UPI"> UPI </option>
+			<option value = "Wallet"> Wallet </option>
+			<option value="NetBanking"> NetBanking </option>
+		</select>
+		<button type="submit">Place my Order!</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>coconut/{{user_id}}/{{product["product_name"]}}</title>
+</head>
+<body>
+	<p>Product Name is {{product["product_name"]}}</p>
+	<p>Product Description is {{product["product_description"]}}</p>
+	<p>Product Price is {{product["product_sell_price"]}}</p>
+	<form action="/coconut/product/{{user_id}}/{{product['product_id']}}" method="POST">
+		<button name = "CartButton" value = "Add" type="submit"> Add </button>
+		<button name = "CartButton" value = "Delete" type="submit" {% if cannot_delete %} disabled {% endif %}> Delete </button>
+	</form>
+	<a href='/coconut/home/{{user_id}}'> Home </a><br>
+	<a href='/coconut/home/playing/{{user_id}}/{{product["product_category"]}}'> Home - Category {{product["product_category"]}}</a><br>
+	<a href='/coconut/home/{{user_id}}/cart'> Cart </a>
+</body>
+</html>
